@@ -1,35 +1,26 @@
-import { useRouter } from 'next/router'
-import Link from 'next/link'
+import React from 'react';
+import { Box, Flex, LogoIcon, User } from 'herm';
 
-export default function Header() {
-  const { pathname } = useRouter()
-
+function Header() {
   return (
-    <header>
-      <Link href="/">
-        <a className={pathname === '/' ? 'is-active' : ''}>Home</a>
-      </Link>
-      <Link href="/about">
-        <a className={pathname === '/about' ? 'is-active' : ''}>About</a>
-      </Link>
-      <Link href="/client-only">
-        <a className={pathname === '/client-only' ? 'is-active' : ''}>
-          Client-Only
-        </a>
-      </Link>
-      <style jsx>{`
-        header {
-          margin-bottom: 25px;
-        }
-        a {
-          font-size: 14px;
-          margin-right: 15px;
-          text-decoration: none;
-        }
-        .is-active {
-          text-decoration: underline;
-        }
-      `}</style>
-    </header>
-  )
+    <Box backgroundColor="#fafafb" paddingLeft="50px" paddingRight="50px">
+      <Flex alignItems="center" justifyContent="space-between" height="50px">
+        <LogoIcon></LogoIcon>
+        <User
+          username="Christian Nwamba"
+          sub="Scheduled for 16th December at 09:30 AM"
+        >
+          <Flex alignItems="center">
+            <Box>
+              <User.Avatar></User.Avatar>
+            </Box>
+            <Box marginLeft="12px">
+              <User.Username></User.Username>
+            </Box>
+          </Flex>
+        </User>
+      </Flex>
+    </Box>
+  );
 }
+export default Header;
